@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produk & Katalog - Java Jamu</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/utama.css">
+    <link rel="stylesheet" href="css/produk.css">
+</head>
+<body class="glass-body min-h-screen flex flex-col justify-between">
+
+    <!-- Navbar tanpa tombol header -->
+    <header class="sticky top-4 z-40 max-w-5xl mx-auto px-6 w-full">
+        <nav class="glass-card px-8 py-3.5 rounded-full flex justify-between items-center shadow-lg">
+            <a href="index.html" class="font-extrabold text-lg tracking-tight text-emerald-950 flex items-center gap-2">
+                <i data-lucide="leaf" class="w-5 h-5 text-emerald-600"></i> Java Jamu
+            </a>
+            <div class="hidden md:flex gap-8 text-sm font-semibold text-zinc-600">
+                <a href="index.html" class="hover:text-emerald-700 transition">Beranda</a>
+                <a href="produk.html" class="text-emerald-800 font-bold">Produk</a>
+                <a href="pemesanan.html" class="hover:text-emerald-700 transition">Pemesanan</a>
+                <a href="tentang.html" class="hover:text-emerald-700 transition">Tentang</a>
+                <a href="kontak.html" class="hover:text-emerald-700 transition">Kontak</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Konten Utama Produk -->
+    <main class="halaman-produk flex-grow max-w-5xl mx-auto px-6 py-12 w-full">
+        <div class="text-center mb-10">
+            <span class="text-xs font-bold tracking-widest text-emerald-700 uppercase">KATALOG RAMUAN</span>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-emerald-950 mt-1 mb-2">Varian Java Jamu</h1>
+            <p class="text-zinc-600 text-sm max-w-lg mx-auto">Pilih racikan khas favorit Anda dan klik tombol pesan untuk mengisi data pemesanan secara instan.</p>
+        </div>
+
+        <!-- Grid Produk -->
+        <section class="daftar-produk grid md:grid-cols-3 gap-6 text-left">
+            <!-- Varian 1 -->
+            <article class="kartu glass-card p-5 rounded-3xl flex flex-col justify-between shadow-lg hover:shadow-2xl transition">
+                <div>
+                    <div class="overflow-hidden rounded-2xl mb-4">
+                        <img src="gambar/Kunyit-asam.jpg" alt="Kunyit Asam" class="w-full h-48 object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full">Klasik</span>
+                    <h2 class="font-bold text-xl text-emerald-950 mt-2">Kunyit Asam</h2>
+                    <p class="text-zinc-600 text-xs leading-relaxed mt-1">Segar dengan perpaduan alami rasa asam jawa dan manisnya gula murni untuk menyegarkan hari Anda.</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-zinc-200/50 flex justify-between items-center">
+                    <span class="harga font-extrabold text-lg text-emerald-800">Rp8.000</span>
+                    <button class="btn bg-emerald-800 text-white px-4 py-2 rounded-full text-xs font-bold shadow-md hover:bg-emerald-900 transition" onclick="bukaPesanan('Kunyit Asam', 8000)">
+                        Pesan Sekarang
+                    </button>
+                </div>
+            </article>
+
+            <!-- Varian 2 -->
+            <article class="kartu glass-card p-5 rounded-3xl flex flex-col justify-between shadow-lg hover:shadow-2xl transition">
+                <div>
+                    <div class="overflow-hidden rounded-2xl mb-4">
+                        <img src="gambar/Beras-kencur.jpg" alt="Beras Kencur" class="w-full h-48 object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full">Favorit</span>
+                    <h2 class="font-bold text-xl text-emerald-950 mt-2">Beras Kencur</h2>
+                    <p class="text-zinc-600 text-xs leading-relaxed mt-1">Manis dan lembut dengan kehangatan aroma kencur khas ramuan tradisional penambah tenaga.</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-zinc-200/50 flex justify-between items-center">
+                    <span class="harga font-extrabold text-lg text-emerald-800">Rp8.000</span>
+                    <button class="btn bg-emerald-800 text-white px-4 py-2 rounded-full text-xs font-bold shadow-md hover:bg-emerald-900 transition" onclick="bukaPesanan('Beras Kencur', 8000)">
+                        Pesan Sekarang
+                    </button>
+                </div>
+            </article>
+
+            <!-- Varian 3 -->
+            <article class="kartu glass-card p-5 rounded-3xl flex flex-col justify-between shadow-lg hover:shadow-2xl transition">
+                <div>
+                    <div class="overflow-hidden rounded-2xl mb-4">
+                        <img src="gambar/Temulawak.jpg" alt="Temulawak" class="w-full h-48 object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-teal-100 text-teal-800 px-2.5 py-1 rounded-full">Herbal</span>
+                    <h2 class="font-bold text-xl text-emerald-950 mt-2">Temulawak</h2>
+                    <p class="text-zinc-600 text-xs leading-relaxed mt-1">Cita rasa khas temulawak pilihan yang kaya khasiat dengan sentuhan rempah alami.</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-zinc-200/50 flex justify-between items-center">
+                    <span class="harga font-extrabold text-lg text-emerald-800">Rp8.000</span>
+                    <button class="btn bg-emerald-800 text-white px-4 py-2 rounded-full text-xs font-bold shadow-md hover:bg-emerald-900 transition" onclick="bukaPesanan('Temulawak', 8000)">
+                        Pesan Sekarang
+                    </button>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- Modal Pesan Terintegrasi dengan Formulir -->
+    <div id="pesanan" class="modal fixed inset-0 bg-zinc-900/50 backdrop-blur-md z-50 justify-center items-center p-4 hidden">
+        <div class="modal-box glass-card bg-white/95 p-6 rounded-3xl max-w-md w-full relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button class="tutup absolute top-4 right-4 text-zinc-400 hover:text-zinc-700 text-xl font-bold" onclick="tutupPesanan()">✕</button>
+            
+            <div class="border-b border-zinc-200 pb-3 mb-4">
+                <span class="text-[10px] font-bold text-emerald-700 uppercase tracking-widest">FORMULIR PEMESANAN</span>
+                <h2 id="namaProduk" class="font-extrabold text-2xl text-emerald-950"></h2>
+                <p id="hargaProduk" class="text-emerald-700 font-extrabold text-base"></p>
+            </div>
+
+            <!-- Form Lengkap -->
+            <form id="formCheckout" onsubmit="prosesPemesananModal(event)" class="space-y-4 text-left">
+                <!-- Data Diri Pemesan -->
+                <div class="space-y-2">
+                    <label class="block text-xs font-bold text-zinc-600">Nama Lengkap</label>
+                    <input type="text" id="namaPembeli" required placeholder="Contoh: Budi Santoso" class="w-full bg-white border border-zinc-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                </div>
+
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-xs font-bold text-zinc-600">No. WhatsApp</label>
+                        <input type="tel" id="telpPembeli" required placeholder="08xxxxxxxxxx" class="w-full bg-white border border-zinc-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-zinc-600">Jumlah Botol</label>
+                        <input type="number" id="jumlah" min="1" value="1" required class="w-full bg-white border border-zinc-200 rounded-xl px-3 py-2 text-xs font-bold text-center focus:outline-none focus:border-emerald-600">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-zinc-600">Alamat Pengiriman</label>
+                    <textarea id="alamatPembeli" rows="2" required placeholder="Masukkan alamat lengkap pengiriman..." class="w-full bg-white border border-zinc-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-600"></textarea>
+                </div>
+
+                <!-- Opsi Tambahan Rasa -->
+                <div>
+                    <p class="font-bold text-xs text-zinc-600 mb-1">Pilihan Tambahan (Opsional)</p>
+                    <div class="space-y-1 bg-zinc-50 p-2.5 rounded-xl border border-zinc-100">
+                        <label class="flex items-center gap-2 text-xs font-medium text-zinc-700 cursor-pointer">
+                            <input type="checkbox" id="madu" class="rounded text-emerald-600"> Madu Alami (+Rp2.000)
+                        </label>
+                        <label class="flex items-center gap-2 text-xs font-medium text-zinc-700 cursor-pointer">
+                            <input type="checkbox" id="perasanjeruknipis" class="rounded text-emerald-600"> Perasan Jeruk Nipis (+Rp1.000)
+                        </label>
+                        <label class="flex items-center gap-2 text-xs font-medium text-zinc-700 cursor-pointer">
+                            <input type="checkbox" id="daunmint" class="rounded text-emerald-600"> Daun Mint Segar (+Rp1.000)
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Metode Pembayaran -->
+                <div>
+                    <label class="block text-xs font-bold text-zinc-600 mb-1">Metode Pembayaran</label>
+                    <select id="metodeBayar" required class="w-full bg-white border border-zinc-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                        <option value="Tunai (COD)">Tunai / COD</option>
+                        <option value="Transfer Bank">Transfer Bank</option>
+                        <option value="E-Wallet (QRIS/Gopay)">E-Wallet / QRIS</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="w-full bg-emerald-800 text-white py-3 rounded-xl font-bold text-xs shadow-md hover:bg-emerald-900 transition mt-2">
+                    Konfirmasi & Buat Struk Pesanan
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Struk -->
+    <div id="struk" class="modal fixed inset-0 bg-zinc-900/50 backdrop-blur-md z-50 justify-center items-center p-4 hidden">
+        <div class="modal-box struk-box glass-card bg-white/95 p-6 rounded-3xl max-w-sm w-full relative shadow-2xl">
+            <button class="tutup absolute top-4 right-4 text-zinc-400 hover:text-zinc-700 text-xl font-bold" onclick="tutupStruk()">✕</button>
+            <h2 class="font-bold text-lg text-emerald-950 text-center mb-4">Struk Pesanan Online</h2>
+            <div id="isiStruk" class="isi-struk text-xs space-y-2 mb-6"></div>
+            <button class="btn w-full bg-emerald-800 text-white py-3 rounded-xl font-bold text-xs shadow-md hover:bg-emerald-900 transition" onclick="kirimWhatsApp()">
+                Kirim ke Penjual via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer border-t border-white/40 bg-white/30 backdrop-blur-md py-8 text-center text-xs text-zinc-500">
+        <h2 class="font-bold text-emerald-950 text-base mb-1">Java Jamu</h2>
+        <p class="text-emerald-700 font-semibold mb-3">SEDUH • NIKMATI • CERITAKAN</p>
+        <p>© 2026 Java Jamu. Semua hak dilindungi.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

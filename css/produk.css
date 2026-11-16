@@ -1,0 +1,8 @@
+/* KHUSUS PRODUK & MODAL */
+.modal.aktif {
+    display: flex;
+}
+
+.modal-terbuka {
+    overflow: hidden;
+}

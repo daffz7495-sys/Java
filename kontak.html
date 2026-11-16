@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak - Java Jamu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/utama.css">
+    <link rel="stylesheet" href="css/kontak.css">
+</head>
+<body class="glass-body min-h-screen flex flex-col justify-between">
+
+    <header class="sticky top-4 z-40 max-w-5xl mx-auto px-6 w-full">
+        <nav class="glass-card px-6 py-3.5 rounded-full flex justify-between items-center">
+            <a href="index.html" class="font-extrabold text-lg tracking-tight text-emerald-950 flex items-center gap-2">
+                <i data-lucide="leaf" class="w-5 h-5 text-emerald-600"></i> Java Jamu
+            </a>
+            <div class="hidden md:flex gap-8 text-sm font-semibold text-zinc-600">
+                <a href="index.html" class="hover:text-emerald-700 transition">Beranda</a>
+                <a href="produk.html" class="hover:text-emerald-700 transition">Produk</a>
+                <a href="pemesanan.html" class="hover:text-emerald-700 transition">Pemesanan</a>
+                <a href="tentang.html" class="hover:text-emerald-700 transition">Tentang</a>
+                <a href="kontak.html" class="text-emerald-800 font-bold">Kontak</a>
+            </div>
+            <a href="produk.html" class="bg-emerald-800 text-white px-5 py-2 rounded-full text-xs font-bold shadow-md hover:bg-emerald-900 transition">
+                Pesan Sekarang
+            </a>
+        </nav>
+    </header>
+
+    <main class="kontak flex-grow max-w-5xl mx-auto px-6 py-12 w-full text-center">
+        <span class="text-xs font-bold tracking-widest text-emerald-700 uppercase">HUBUNGI KAMI</span>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-emerald-950 mt-1 mb-2">Temukan Kami</h1>
+        <p class="kontak-intro text-zinc-600 text-sm max-w-md mx-auto mb-10">Punya pertanyaan atau ingin menikmati Java Jamu? Hubungi kami melalui informasi di bawah ini.</p>
+
+        <section class="info-kontak grid md:grid-cols-3 gap-6 text-left">
+            <!-- Card Alamat -->
+            <div class="kontak-item flex flex-col justify-between">
+                <article class="kontak-card glass-card p-6 rounded-3xl h-full flex flex-col justify-between shadow-lg">
+                    <div>
+                        <div class="w-10 h-10 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-700 mb-4">
+                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        </div>
+                        <h2 class="font-bold text-lg text-emerald-950 mb-2">Alamat Kami</h2>
+                        <p class="text-zinc-600 text-xs leading-relaxed">Jl. Dhuhayu Residence, Malang City, East Java</p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/feCYRh14VQYPSv8p9" target="_blank" class="btn block text-center w-full bg-emerald-800 text-white py-2.5 rounded-full text-xs font-bold shadow-md hover:bg-emerald-900 transition mt-6">
+                        Lihat Lokasi
+                    </a>
+                </article>
+            </div>
+
+            <!-- Card Sosmed -->
+            <div class="kontak-item flex flex-col justify-between">
+                <article class="kontak-card glass-card p-6 rounded-3xl h-full flex flex-col justify-between shadow-lg">
+                    <div>
+                        <div class="w-10 h-10 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-700 mb-4">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        </div>
+                        <h2 class="font-bold text-lg text-emerald-950 mb-2">Sosial Media Kami</h2>
+                        <p class="text-zinc-600 text-xs leading-relaxed">Terhubung melalui WhatsApp resmi & Instagram Java Jamu.</p>
+                    </div>
+                    <button class="btn w-full bg-emerald-800 text-white py-2.5 rounded-full text-xs font-bold shadow-md hover:bg-emerald-900 transition mt-6" onclick="bukaSosmed()">
+                        Link Sosial Media Kami
+                    </button>
+                </article>
+            </div>
+
+            <!-- Card Jam Buka -->
+            <div class="kontak-item">
+                <article class="kontak-card jam-buka glass-card bg-emerald-900/90 text-white p-6 rounded-3xl shadow-lg border border-white/20">
+                    <div class="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center text-emerald-300 mb-4">
+                        <i data-lucide="clock" class="w-5 h-5"></i>
+                    </div>
+                    <h2 class="font-bold text-lg mb-3">Jam Buka Outlet</h2>
+                    <ul class="text-xs space-y-2 text-zinc-200">
+                        <li class="flex justify-between"><span>Senin - Kamis:</span> <span class="font-bold text-white">09.00 - 21.00 WIB</span></li>
+                        <li class="flex justify-between"><span>Jum'at:</span> <span class="text-red-300 font-bold">Libur</span></li>
+                        <li class="flex justify-between"><span>Sabtu & Minggu:</span> <span class="font-bold text-white">10.00 - 20.00 WIB</span></li>
+                    </ul>
+                    <hr class="border-white/10 my-4">
+                    <h2 class="font-bold text-xs uppercase tracking-wider text-emerald-300 mb-1">Informasi Hari Ini</h2>
+                    <p id="informasihariini" class="text-xs text-zinc-300 italic"></p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Modal Sosmed -->
+        <div id="modalSosmed" class="modal-sosmed fixed inset-0 bg-zinc-900/50 backdrop-blur-md z-50 justify-center items-center p-4 hidden">
+            <div class="isi-modal-sosmed glass-card bg-white/90 p-6 rounded-3xl max-w-sm w-full relative shadow-2xl text-center">
+                <button class="tutup-sosmed absolute top-4 right-4 text-zinc-400 hover:text-zinc-700 text-xl font-bold" onclick="tutupSosmed()">✕</button>
+                <h2 class="font-bold text-lg text-emerald-950 mb-1">Sosial Media Kami</h2>
+                <p class="text-xs text-zinc-600 mb-4">Pilih platform untuk mengunjungi kami.</p>
+                <div class="space-y-2">
+                    <a href="https://wa.me/6283139501874" target="_blank" class="block w-full bg-emerald-600 text-white py-2.5 rounded-xl font-bold text-xs hover:bg-emerald-700 transition">
+                        WhatsApp
+                    </a>
+                    <a href="https://www.instagram.com/javajamu.official" target="_blank" class="block w-full bg-pink-600 text-white py-2.5 rounded-xl font-bold text-xs hover:bg-pink-700 transition">
+                        Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer border-t border-white/40 bg-white/30 backdrop-blur-md py-8 text-center text-xs text-zinc-500">
+        <h2 class="font-bold text-emerald-950 text-base mb-1">Java Jamu</h2>
+        <p class="text-emerald-700 font-semibold mb-3">SEDUH • NIKMATI • CERITAKAN</p>
+        <p>© 2026 Java Jamu. Semua hak dilindungi.</p>
+    </footer>
+
+    <script src="js/informasi.js"></script>
+    <script src="js/script.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

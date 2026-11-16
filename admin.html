@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Java Jamu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="glass-body min-h-screen p-6 text-zinc-800">
+
+    <div class="max-w-5xl mx-auto">
+        <div class="flex justify-between items-center mb-8 pb-4 border-b border-white/40">
+            <h1 class="text-2xl font-extrabold text-emerald-950 flex items-center gap-2">
+                <i data-lucide="layout-dashboard" class="w-6 h-6 text-emerald-700"></i> Pesanan Java Jamu
+            </h1>
+            <button onclick="tampilkanPesanan()" class="bg-emerald-800 text-white px-4 py-2 rounded-full text-xs font-bold hover:bg-emerald-900 transition flex items-center gap-1">
+                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Refresh
+            </button>
+        </div>
+
+        <div id="daftarPesanan" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="col-span-full text-center text-zinc-500 py-12 font-medium">Memuat pesanan...</div>
+        </div>
+    </div>
+
+    <script>
+        function tampilkanPesanan() {
+            fetch("http://localhost:3000/pesanan")
+            .then(res => res.json())
+            .then(data => {
+                let tempatPesanan = document.getElementById("daftarPesanan");
+                tempatPesanan.innerHTML = "";
+
+                if (data.length === 0) {
+                    tempatPesanan.innerHTML = `<div class="col-span-full glass-card p-8 rounded-3xl text-center text-zinc-500 font-bold">Belum ada pesanan.</div>`;
+                    return;
+                }
+
+                data.forEach(pesanan => {
+                    let produkHTML = "";
+                    pesanan.daftarPesanan.forEach(produk => {
+                        let tambahanHTML = "";
+                        if (produk.tambahan && produk.tambahan.length > 0) {
+                            tambahanHTML = produk.tambahan.map(t => `<small class="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-semibold">+ ${t}</small> `).join('');
+                        } else {
+                            tambahanHTML = `<small class="text-[10px] text-zinc-400 italic">Tidak ada tambahan</small>`;
+                        }
+
+                        produkHTML += `
+                            <div class="py-2 border-b border-zinc-100 last:border-b-0">
+                                <strong class="text-xs text-zinc-800">${produk.nama}</strong> <span class="text-xs text-emerald-700 font-bold">× ${produk.jumlah}</span><br>
+                                ${tambahanHTML}
+                            </div>
+                        `;
+                    });
+
+                    const statusClass = (pesanan.status || "Menunggu").toLowerCase();
+
+                    tempatPesanan.innerHTML += `
+                        <div class="kartu glass-card p-6 rounded-3xl shadow-lg border border-white/60 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-2">
+                                    <h2 class="font-bold text-base text-emerald-950">Pesanan #${pesanan.nomorPesanan}</h2>
+                                    <span class="status ${statusClass} font-bold text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full">
+                                        ${pesanan.status || "Menunggu"}
+                                    </span>
+                                </div>
+                                <p class="text-[11px] text-zinc-400 mb-4">📅 ${pesanan.tanggal || "Tanggal tidak tersedia"}</p>
+                                <div class="bg-white/60 p-3 rounded-2xl mb-4 border border-zinc-100">
+                                    <h3 class="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-2">Produk</h3>
+                                    ${produkHTML}
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="text-sm font-bold text-emerald-950 flex justify-between items-center border-t border-zinc-200/60 pt-3 mb-4">
+                                    <span>TOTAL:</span>
+                                    <span class="text-emerald-800 font-extrabold text-base">Rp${pesanan.total.toLocaleString("id-ID")}</span>
+                                </h3>
+
+                                <div class="space-y-2">
+                                    ${(pesanan.status || "Menunggu") === "Menunggu" ? `
+                                        <button class="w-full bg-emerald-800 text-white py-2 rounded-xl text-xs font-bold hover:bg-emerald-900 transition" onclick="ubahStatus(${pesanan.nomorPesanan}, 'Diproses')">
+                                            Konfirmasi Pesanan
+                                        </button>
+                                    ` : ""}
+
+                                    ${pesanan.status === "Diproses" ? `
+                                        <button class="w-full bg-blue-600 text-white py-2 rounded-xl text-xs font-bold hover:bg-blue-700 transition" onclick="ubahStatus(${pesanan.nomorPesanan}, 'Selesai')">
+                                            Tandai Selesai
+                                        </button>
+                                    ` : ""}
+
+                                    <button class="w-full bg-red-100 text-red-600 py-2 rounded-xl text-xs font-bold hover:bg-red-200 transition" onclick="hapusPesanan(${pesanan.nomorPesanan})">
+                                        Hapus Pesanan
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                lucide.createIcons();
+            })
+            .catch(err => {
+                document.getElementById("daftarPesanan").innerHTML = `<div class="col-span-full text-center text-red-500 py-8">Gagal mengambil pesanan.</div>`;
+            });
+        }
+
+        function hapusPesanan(nomorPesanan) {
+            if (!confirm("Yakin ingin menghapus pesanan #" + nomorPesanan + "?")) return;
+            fetch("http://localhost:3000/pesanan/" + nomorPesanan, { method: "DELETE" })
+            .then(res => res.json())
+            .then(data => tampilkanPesanan())
+            .catch(err => console.error("Gagal menghapus pesanan:", err));
+        }
+
+        function ubahStatus(nomorPesanan, statusBaru) {
+            fetch("http://localhost:3000/pesanan/" + nomorPesanan, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ status: statusBaru })
+            })
+            .then(res => res.json())
+            .then(data => tampilkanPesanan())
+            .catch(err => console.error("Gagal mengubah status:", err));
+        }
+
+        tampilkanPesanan();
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - Java Jamu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/utama.css">
+    <link rel="stylesheet" href="css/tentang.css">
+</head>
+<body class="glass-body min-h-screen flex flex-col justify-between">
+
+    <header class="sticky top-4 z-40 max-w-5xl mx-auto px-6 w-full">
+        <nav class="glass-card px-6 py-3.5 rounded-full flex justify-between items-center">
+            <a href="index.html" class="font-extrabold text-lg tracking-tight text-emerald-950 flex items-center gap-2">
+                <i data-lucide="leaf" class="w-5 h-5 text-emerald-600"></i> Java Jamu
+            </a>
+            <div class="hidden md:flex gap-8 text-sm font-semibold text-zinc-600">
+                <a href="index.html" class="hover:text-emerald-700 transition">Beranda</a>
+                <a href="produk.html" class="hover:text-emerald-700 transition">Produk</a>
+                <a href="pemesanan.html" class="hover:text-emerald-700 transition">Pemesanan</a>
+                <a href="tentang.html" class="text-emerald-800 font-bold">Tentang</a>
+                <a href="kontak.html" class="hover:text-emerald-700 transition">Kontak</a>
+            </div>
+            <a href="produk.html" class="bg-emerald-800 text-white px-5 py-2 rounded-full text-xs font-bold shadow-md hover:bg-emerald-900 transition">
+                Pesan Sekarang
+            </a>
+        </nav>
+    </header>
+
+    <main class="tentang flex-grow max-w-4xl mx-auto px-6 py-12 text-center">
+        <span class="text-xs font-bold tracking-widest text-emerald-700 uppercase">TENTANG KAMI</span>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-emerald-950 mt-1 mb-4">Jamu dalam Cerita Baru</h1>
+        <p class="tentang-intro text-zinc-600 text-sm md:text-base max-w-xl mx-auto leading-relaxed mb-12">
+            Java Jamu hadir untuk memperkenalkan kembali cita rasa jamu tradisional dengan cara yang lebih dekat dengan generasi masa kini.
+        </p>
+
+        <section class="cerita-kami grid md:grid-cols-3 gap-6 text-left">
+            <article class="glass-card p-6 rounded-3xl shadow-lg border border-white/60">
+                <div class="w-10 h-10 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-700 mb-4">
+                    <i data-lucide="sparkles" class="w-5 h-5"></i>
+                </div>
+                <h2 class="font-bold text-lg text-emerald-950 mb-2">Awal Mula</h2>
+                <p class="text-zinc-600 text-xs leading-relaxed">Java Jamu berawal dari ketertarikan terhadap minuman tradisional Indonesia yang kaya akan rasa dan cerita.</p>
+            </article>
+
+            <article class="glass-card p-6 rounded-3xl shadow-lg border border-white/60">
+                <div class="w-10 h-10 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-700 mb-4">
+                    <i data-lucide="target" class="w-5 h-5"></i>
+                </div>
+                <h2 class="font-bold text-lg text-emerald-950 mb-2">Tujuan Kami</h2>
+                <p class="text-zinc-600 text-xs leading-relaxed">Kami ingin menghadirkan jamu sebagai minuman yang sederhana, nikmat, dan tetap membawa nilai tradisional.</p>
+            </article>
+
+            <article class="glass-card p-6 rounded-3xl shadow-lg border border-white/60">
+                <div class="w-10 h-10 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-700 mb-4">
+                    <i data-lucide="heart" class="w-5 h-5"></i>
+                </div>
+                <h2 class="font-bold text-lg text-emerald-950 mb-2">Nilai Kami</h2>
+                <p class="text-zinc-600 text-xs leading-relaxed">Menjaga cita rasa tradisional sambil memberikan pengalaman yang modern, segar, dan nyaman.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer border-t border-white/40 bg-white/30 backdrop-blur-md py-8 text-center text-xs text-zinc-500">
+        <h2 class="font-bold text-emerald-950 text-base mb-1">Java Jamu</h2>
+        <p class="text-emerald-700 font-semibold mb-3">SEDUH • NIKMATI • CERITAKAN</p>
+        <p>© 2026 Java Jamu. Semua hak dilindungi.</p>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
